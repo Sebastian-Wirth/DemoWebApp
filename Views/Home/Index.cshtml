@@ -1,0 +1,35 @@
+﻿@model IEnumerable<DemoWebApp.Models.Product>
+@{
+    ViewData["Title"] = "Webshop";
+}
+
+<body>
+    <div class="carpet">
+
+        <div class="header">
+            <h1>@ViewData["Title"]</h1>
+            <p>Entdecken Sie unsere Produkte und Angebote</p>
+        </div>
+
+        <div class="product-section">
+
+            @foreach (var item in Model)
+            {
+                <div class="responsive">
+                    <div class="product">
+                        <img src="@Html.DisplayFor(modelItem => item.ImageUrl)">
+                        <div class="label">
+                                <h5>@Html.DisplayFor(modelItem => item.Name)</h5>
+                                <h6>@Html.DisplayFor(modelItem => item.Price)</h6>
+                                <button class="cart-button">Zum Warenkorb hinzufügen</button>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        
+        <div class="clearfix"></div>
+
+        <div class="filler"></div>
+    </div>
+</body>

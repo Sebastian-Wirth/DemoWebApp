@@ -1,0 +1,154 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    background-color: #E8E8E8;
+}
+
+.carpet {
+    background-color: #f4f4f4;
+    max-width: 1200px;
+    min-height: 100vh; /* Sorgt dafür dass Carpet mindestens so hoch ist wie das Browserfenster  */
+    margin: auto;
+}
+
+.header {
+    padding: 30px;
+    text-align: center;
+}
+
+.logo {
+    background-color: lightslategrey;
+}
+
+    .logo p {
+        font-size: 15px;
+        color: white;
+        font-family: 'Baskerville Old Face';
+        align-content: baseline;
+    }
+
+.container-fluid img {
+    margin-right: 20px;
+}
+
+div.product {
+    background-color: white;
+    border: 1px solid #ccc;
+    width: 100%;
+    max-width: 300px; /* Max Breite festgelegt */
+    margin: auto; /* Zentriert das Produkt */
+}
+
+    div.product:hover {
+        border: 1px solid #777;
+    }
+
+    div.product img {
+        width: 100%;
+        height: 200px; /* Feste Höhe für das Bild */
+        object-fit: cover; /* Sorgt dafür, dass das Bild den Bereich abdeckt, ohne das Seitenverhältnis zu verzerren */
+    }
+
+    div.product a {
+        color: inherit;
+        text-decoration: inherit;
+    }
+
+.cart-button {
+    background-color: seagreen;
+    color: white;
+    font-size: 14px;
+    align-self: flex-end; /* Richtet den Button am rechten Rand aus */
+    margin-top: auto; /* Schiebt den Button nach unten, wenn Platz vorhanden ist */
+}
+
+div.label {
+    height: 100px; /* Feste Höhe für den Label-Bereich */
+    padding: 10px; /* Etwas Innenabstand */
+    background-color: white; /* Weiße Hintergrundfarbe */
+    text-align: left; /* Zentriert den Text */
+    box-sizing: border-box; /* Inkludiert padding und border in die Gesamthöhe und -breite */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Verteilt den verfügbaren Platz zwischen den Items */
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.product-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Zentriert die Produkte horizontal */
+    gap: 15px; /* Gibt einen Abstand zwischen den Elementen an */
+}
+
+.product h5 {
+    margin: 0; /* Entfernt standardmäßige Margin */
+    padding: 0 5px; /* Fügt horizontalen Innenabstand hinzu */
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.product h6 {
+    margin: 0; /* Entfernt standardmäßige Margin */
+    padding: 0 5px; /* Fügt horizontalen Innenabstand hinzu */
+    font-size: 16px;
+    font-weight: bold;
+    color: seagreen;
+}
+
+
+/* Responsiver Teil */
+.responsive {
+    width: calc(100% - 10px); /* 100% der Breite minus die Margins links und rechts */
+    margin: 5px;
+    box-sizing: border-box;
+}
+
+/* Media Queries */
+@media only screen and (min-width: 600px) {
+    .responsive {
+        width: calc(50% - 10px); /* Passt die Breite an, um den Margin zu berücksichtigen */
+    }
+}
+
+@media only screen and (min-width: 800px) {
+    .responsive {
+        width: calc(33.3% - 10px);
+    }
+}
+
+@media only screen and (min-width: 1000px) {
+    .responsive {
+        width: calc(25% - 10px);
+    }
+}
+
+.footer {
+    background-color: white;
+}

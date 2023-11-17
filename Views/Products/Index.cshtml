@@ -1,0 +1,51 @@
+﻿@model IEnumerable<DemoWebApp.Models.Product>
+
+@{
+    ViewData["Title"] = "Händlerzugriff";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<body>
+    <div class="carpet">
+        <h1>@ViewData["Title"]</h1>
+        <p> Auf dieser Seite können Sie die Produkte des Webshops verwalten.</p>
+
+        <p>
+            <a asp-action="Create">Neues Produkt hinzufügen</a>
+        </p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        <p>Name</p>
+                    </th>
+                    <th>
+                        <p>Preis</p>
+                    </th>
+                    <th>
+                        <p>Bilddatei-Link</p>
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+        @foreach (var item in Model) {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ImageUrl)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Bearbeiten</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id">Entfernen</a>
+                    </td>
+                </tr>
+        }
+            </tbody>
+        </table>
+    </div>
+</body>
