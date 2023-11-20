@@ -1,4 +1,4 @@
-﻿@model DemoWebApp.Models.Product
+﻿@model DemoWebApp.Models.Customer
 
 @{
     ViewData["Title"] = "Delete";
@@ -6,8 +6,9 @@
 }
 
 <div class="carpet">
-    <h4>Produkteintrag löschen</h4>
+    <h4>Kundeneintrag löschen</h4>
     <hr />
+
     <dl class="row">
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Name)
@@ -16,16 +17,10 @@
             @Html.DisplayFor(model => model.Name)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Price)
+            @Html.DisplayNameFor(model => model.CreditCardNo)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Price)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ImageUrl)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ImageUrl)
+            @Html.DisplayFor(model => model.CreditCardNo)
         </dd>
     </dl>
     

@@ -1,12 +1,12 @@
-﻿@model DemoWebApp.Models.Product
+﻿@model DemoWebApp.Models.Customer
 
 @{
-    ViewData["Title"] = "Bearbeiten";
+    ViewData["Title"] = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="carpet">
-    <h4>Produkteintrag bearbeiten</h4>
+    <h4>Kundeneintrag bearbeiten</h4>
     <hr />
     <div class="col-md-4">
         <form asp-action="Edit">
@@ -18,24 +18,20 @@
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label>Preis</label>
-                <input asp-for="Price" class="form-control" />
-                <span asp-validation-for="Price" class="text-danger"></span>
+                <label>Kreditkartennummer</label>
+                <input asp-for="CreditCardNo" class="form-control" />
+                <span asp-validation-for="CreditCardNo" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label>Bilddatei-Link</label>
-                <input asp-for="ImageUrl" class="form-control" />
-                <span asp-validation-for="ImageUrl" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <br />
+                <input type="submit" value="Speichern" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Zurück zur Produktübersicht</a>
+    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {

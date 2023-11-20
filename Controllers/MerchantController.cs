@@ -10,11 +10,11 @@ using DemoWebApp.Models;
 
 namespace DemoWebApp.Controllers
 {
-    public class ProductsController : Controller
+    public class MerchantController : Controller
     {
         private readonly DemoDbContext _context;
 
-        public ProductsController(DemoDbContext context)
+        public MerchantController(DemoDbContext context)
         {
             _context = context;
         }
@@ -28,7 +28,7 @@ namespace DemoWebApp.Controllers
         // GET: Products/Details/5
         public async Task<IActionResult> Details(int id)
         {
-            if (id == null || _context.Product == null)
+            if (_context.Product == null)
             {
                 return NotFound();
             }

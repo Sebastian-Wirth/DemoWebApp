@@ -7,12 +7,21 @@ using Microsoft.Identity.Web.UI;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using DemoWebApp.Data;
+using Azure.Identity;
+using Azure.Security.KeyVault.Secrets;
+using Microsoft.AspNetCore.HttpOverrides;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
     .AddMicrosoftIdentityWebApp(builder.Configuration.GetSection("AzureAd"));
+
+builder.Services.Configure<ForwardedHeadersOptions>(options =>
+{
+    options.ForwardedHeaders = ForwardedHeaders.XForwardedHost | ForwardedHeaders.XForwardedProto;
+});
+
 
 builder.Services.AddAuthorization(options =>
 
@@ -28,9 +37,13 @@ builder.Services.AddControllersWithViews(options =>
 });
 builder.Services.AddRazorPages()
     .AddMicrosoftIdentityUI();
-builder.Services.AddDbContext<DemoDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("SqlConnection") ?? throw new InvalidOperationException("Connection string 'SqlConnection' not found.")));
 
+var kvUri = "https://WirthWebKeyVault.vault.azure.net";
+var client = new SecretClient(new Uri(kvUri), new DefaultAzureCredential());
+var secret = client.GetSecret("SqlConnection");
+
+builder.Services.AddDbContext<DemoDbContext>(options =>
+    options.UseSqlServer(secret.Value.Value));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DemoWebApp.Models
 {
-    public class Product
+    public class Customer
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity), Key()]
         public int Id { get; set; }
@@ -12,10 +12,7 @@ namespace DemoWebApp.Models
         public string Name { get; set; }
 
         [Required]
-        public string Price { get; set; }
-
-        [Required]
-        public string ImageUrl { get; set; }
+        public string CreditCardNo { get; set; }
 
     }
 }

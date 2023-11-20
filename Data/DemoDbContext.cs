@@ -15,5 +15,7 @@ namespace DemoWebApp.Data
         }
 
         public DbSet<DemoWebApp.Models.Product> Product { get; set; } = default!;
+
+        public DbSet<DemoWebApp.Models.Customer> Customer { get; set; }
     }
 }

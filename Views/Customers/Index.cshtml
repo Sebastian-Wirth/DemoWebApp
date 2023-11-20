@@ -1,16 +1,16 @@
-﻿@model IEnumerable<DemoWebApp.Models.Product>
+﻿@model IEnumerable<DemoWebApp.Models.Customer>
 
 @{
-    ViewData["Title"] = "Produktdatenbank";
+    ViewData["Title"] = "Kundendatenbank";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <body>
     <div class="carpet">
         <h1>@ViewData["Title"]</h1>
-        <p> Auf dieser Seite können die Produkte verwaltet werden.</p>
+        <p> Auf dieser Seite kann der Kundenstamm verwaltet werden.</p>
 
         <p>
-            <a asp-action="Create">Neues Produkt hinzufügen</a>
+            <a asp-action="Create">Neuen Kunden hinzufügen</a>
         </p>
         <table class="table">
             <thead>
@@ -19,10 +19,7 @@
                         <p>Name</p>
                     </th>
                     <th>
-                        <p>Preis</p>
-                    </th>
-                    <th>
-                        <p>Bilddatei-Link</p>
+                        <p>Kreditkartennummer</p>
                     </th>
                     <th></th>
                 </tr>
@@ -31,13 +28,10 @@
         @foreach (var item in Model) {
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Name)
+                            @Html.DisplayFor(modelItem => item.Name)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Price)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ImageUrl)
+                            @item.CreditCardNo.Substring(0,80)
                     </td>
                     <td>
                         <a asp-action="Edit" asp-route-id="@item.Id">Bearbeiten</a>

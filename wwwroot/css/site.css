@@ -21,28 +21,34 @@ body {
     background-color: #E8E8E8;
 }
 
+.nav-item:hover {
+    background-color: #f4f4f4;
+}
+
+
 .carpet {
     background-color: #f4f4f4;
     max-width: 1200px;
-    min-height: 100vh; /* Sorgt dafür dass Carpet mindestens so hoch ist wie das Browserfenster  */
+    min-height: 120vh; /* Sorgt dafür dass Carpet mindestens so hoch ist wie das Browserfenster  */
     margin: auto;
+}
+
+.empty {
+    height: 20px;
+}
+
+.product-db {
+    background-color: #f4f4f4;
+}
+
+.customer-db {
+    background-color: #f4f4f4;
 }
 
 .header {
     padding: 30px;
     text-align: center;
 }
-
-.logo {
-    background-color: lightslategrey;
-}
-
-    .logo p {
-        font-size: 15px;
-        color: white;
-        font-family: 'Baskerville Old Face';
-        align-content: baseline;
-    }
 
 .container-fluid img {
     margin-right: 20px;
