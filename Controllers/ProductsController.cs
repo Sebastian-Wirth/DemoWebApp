@@ -26,7 +26,7 @@ namespace DemoWebApp.Controllers
         }
 
         // GET: Products/Details/5
-        public async Task<IActionResult> Details(int id)
+        public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.Product == null)
             {
@@ -60,13 +60,13 @@ namespace DemoWebApp.Controllers
             {
                 _context.Add(product);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index), "Merchant");
             }
             return View(product);
         }
 
         // GET: Products/Edit/5
-        public async Task<IActionResult> Edit(string id)
+        public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Product == null)
             {
@@ -111,13 +111,13 @@ namespace DemoWebApp.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index), "Merchant");
             }
             return View(product);
         }
 
         // GET: Products/Delete/5
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Product == null)
             {
@@ -137,7 +137,7 @@ namespace DemoWebApp.Controllers
         // POST: Products/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(string id)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
             if (_context.Product == null)
             {
@@ -150,7 +150,7 @@ namespace DemoWebApp.Controllers
             }
             
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Index), "Merchant");
         }
 
         private bool ProductExists(int id)

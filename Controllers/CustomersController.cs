@@ -67,7 +67,7 @@ namespace DemoWebApp.Controllers
                 customer.CreditCardNo = Encrypt(customer.CreditCardNo);
                 _context.Add(customer);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index), "Merchant");
             }
             return View(customer);
         }
@@ -120,7 +120,7 @@ namespace DemoWebApp.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index), "Merchant");
             }
             return View(customer);
         }
@@ -140,6 +140,7 @@ namespace DemoWebApp.Controllers
                 return NotFound();
             }
 
+            customer.CreditCardNo = Decrypt(customer.CreditCardNo);
             return View(customer);
         }
 
@@ -159,7 +160,7 @@ namespace DemoWebApp.Controllers
             }
             
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Index), "Merchant");
         }
 
         private bool CustomerExists(int id)
