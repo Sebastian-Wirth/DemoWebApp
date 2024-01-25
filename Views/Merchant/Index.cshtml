@@ -82,7 +82,7 @@
                                 @Html.DisplayFor(modelItem => item.Name)
                             </td>
                             <td>
-                                @item.CreditCardNo.Substring(0,80)
+                                @item.CreditCardNo.Substring(0,Math.Min(item.CreditCardNo.Length,80))
                             </td>
                             <td>
                                 <a asp-controller="Customers" asp-action="Edit" asp-route-id="@item.Id">Bearbeiten</a>

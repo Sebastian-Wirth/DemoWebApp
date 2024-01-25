@@ -28,6 +28,7 @@ builder.Services.AddAuthorization(options =>
 {
     options.FallbackPolicy = options.DefaultPolicy;
 });
+
 builder.Services.AddControllersWithViews(options =>
 {
     var policy = new AuthorizationPolicyBuilder()
@@ -38,12 +39,14 @@ builder.Services.AddControllersWithViews(options =>
 builder.Services.AddRazorPages()
     .AddMicrosoftIdentityUI();
 
-var kvUri = "https://WirthWebKeyVault.vault.azure.net";
+var kvUri = "https://WirthKeyVault2.vault.azure.net";
 var client = new SecretClient(new Uri(kvUri), new DefaultAzureCredential());
-var secret = client.GetSecret("SqlConnection");
+var secret = client.GetSecret("SqlConnection-KV");
+var connString = secret.Value.Value;
+// var connString = "Server=wirthdbserver.database.windows.net;Database=wirthdb;User ID=dbserveradmin; Password=demoPassword1";
 
 builder.Services.AddDbContext<DemoDbContext>(options =>
-    options.UseSqlServer(secret.Value.Value));
+    options.UseSqlServer(connString));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

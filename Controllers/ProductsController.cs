@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DemoWebApp.Data;
 using DemoWebApp.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DemoWebApp.Controllers
 {
+    [AllowAnonymous]
     public class ProductsController : Controller
     {
         private readonly DemoDbContext _context;

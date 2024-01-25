@@ -10,9 +10,11 @@ using DemoWebApp.Models;
 using Azure.Security.KeyVault.Keys.Cryptography;
 using Azure.Identity;
 using System.Text;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DemoWebApp.Controllers
 {
+    [AllowAnonymous]
     public class CustomersController : Controller
     {
         private readonly DemoDbContext _context;
@@ -21,14 +23,14 @@ namespace DemoWebApp.Controllers
         public CustomersController(DemoDbContext context)
         {
             _context = context;
-            Uri keyId = new ("https://wirthwebkeyvault.vault.azure.net/keys/WirthWebKey/");
+            Uri keyId = new("https://wirthkeyvault2.vault.azure.net/keys/WirthKey/");
             _cryptoClient = new CryptographyClient(keyId, new DefaultAzureCredential());
         }
 
         // GET: Customers
         public async Task<IActionResult> Index()
         {
-              return View(await _context.Customer.ToListAsync());
+            return View(await _context.Customer.ToListAsync());
         }
 
         // GET: Customers/Details/5
@@ -140,7 +142,14 @@ namespace DemoWebApp.Controllers
                 return NotFound();
             }
 
-            customer.CreditCardNo = Decrypt(customer.CreditCardNo);
+            try
+            {
+                customer.CreditCardNo = Decrypt(customer.CreditCardNo);
+            }
+            catch (Exception)
+            {
+                customer.CreditCardNo = "Error during Decryption (invalid PK?)";
+            }
             return View(customer);
         }
 
@@ -158,14 +167,14 @@ namespace DemoWebApp.Controllers
             {
                 _context.Customer.Remove(customer);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index), "Merchant");
         }
 
         private bool CustomerExists(int id)
         {
-          return _context.Customer.Any(e => e.Id == id);
+            return _context.Customer.Any(e => e.Id == id);
         }
 
         private string Encrypt(string input)
